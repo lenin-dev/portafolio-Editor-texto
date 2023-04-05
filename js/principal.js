@@ -68,6 +68,25 @@ function httpDelete(url) {
     }
 }
 
+// METODO PUT
+function httpPut(url) {
+    var http = new XMLHttpRequest();
+
+    http.open("PUT", url, true);
+    http.send();
+
+    http.onreadystatechange = function() {
+        if(this.status == 200 && this.readyState == 4) {
+            var respuesta = JSON.parse(this.responseText);
+
+            if(respuesta.estado == 'actualizado') {
+                mostrarArchActualizados(entrada = "mostrar");
+                limpiar();
+            }
+        }
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // CARGAR NOMBRES DE LOS ARCHIVOS
@@ -95,8 +114,8 @@ function cargarTexto(info, archivo) {
     var textarea = document.getElementById('txtEditor');
     var nomDoc  = document.getElementById('nomDoc');
 
-    nomDoc.innerHTML = archivo;
     textarea.innerHTML = info;
+    nomDoc.innerHTML = archivo;
 }
 
 // LIMPIAR TEXTO
@@ -104,17 +123,22 @@ document.getElementById('btnLimpiar').addEventListener("click", function() { lim
 function limpiar() {
     var textarea = document.getElementById('txtEditor');
     var nomDoc  = document.getElementById('nomDoc');
+    var txtNomArchivo  = document.getElementById('txtNomArchivo');
+    var txtCambiarNom  = document.getElementById('txtCambiarNom');
 
+    txtCambiarNom.value = "";
+    txtNomArchivo.value = "";
     nomDoc.innerHTML = "";
-    textarea.innerHTML = "";
+    textarea.value = "";
 }
 
 // CREAR ARCHIVO
 let envio = document.getElementById("btnCrear")
 let nombre = document.getElementById("txtNomArchivo")
+
 envio.addEventListener("click", (event) => {
     event.preventDefault()
-    if (nombre.value.trim() === "") {
+    if (nombre.value.trim() == "") {
         alert("Debe ingresar un nombre para crear el archivo.")
 
     } else {
@@ -141,5 +165,19 @@ function eliminarArchivo() {
         // alert(document.getElementById('nomDoc').innerHTML);
     } else {
         alert("Seleccione un archivo para eliminar");
+    }
+}
+
+document.getElementById('btnCambiar').addEventListener("click", function() {
+    actualizarArchivo();
+});
+function actualizarArchivo() {
+    var campo = document.getElementById('txtCambiarNom');
+
+    if(campo.value.trim() == "") {
+        alert("Llene el campo para actualizar el nombre");
+    } else {
+        var nom = campo.value.replace(/ /g, "_");
+        httpPut("./php/metodos.php?archivo="+document.getElementById('nomDoc').innerHTML+"&actualizar="+nom);
     }
 }

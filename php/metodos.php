@@ -24,9 +24,14 @@
                 http_response_code(200);
 
             } else if(isset($_POST['nombrearchivo']) != "") {
-                $respuesta['estado'] = 'crear_doc';
-                $respuesta['datos'] = json_decode(crearArchivo($_POST['nombre']));
-                http_response_code(200);
+
+                if($datosCreacion = json_decode(crearArchivo($_POST['nombrearchivo']))) {
+                    $respuesta['estado'] = 'crear_doc';
+                    http_response_code(200);
+
+                } else {
+                    http_response_code(500);
+                }
 
             } else {
                 http_response_code(404);
@@ -42,6 +47,23 @@
                 } else {
                     http_response_code(500);
 
+                }
+
+            } else {
+                http_response_code(404);
+            }
+
+            break;
+
+        case 'PUT':
+            if(isset($_GET['archivo']) && isset($_GET['actualizar'])) {       
+
+                if(actualizarArchivo($_GET['archivo'], $_GET['actualizar'])) {
+                    $respuesta['estado'] = 'actualizado';
+                    http_response_code(200);
+                    
+                } else {
+                    http_response_code(500);
                 }
 
             } else {

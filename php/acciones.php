@@ -30,15 +30,27 @@
     function crearArchivo($nomArchivo) {
         if($crearArchivo = fopen('../archivos/'.$nomArchivo.'.txt', 'a')) {
             fclose($crearArchivo);
+            return true;
         } else {
             fwrite($crearArchivo, "");
             fclose($crearArchivo);
+            return false;
         }
     }
 
     function eliminarArchivo($archivo) {
         if(file_exists('../archivos/'.$archivo)) {
             unlink('../archivos/'.$archivo);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function actualizarArchivo($nomArchivo, $nomActualizado) {
+
+        if(file_exists("../archivos/".$nomArchivo)) {
+            rename("../archivos/".$nomArchivo, "../archivos/".$nomActualizado.'.txt');
             return true;
         } else {
             return false;
