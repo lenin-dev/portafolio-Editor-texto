@@ -1,0 +1,7 @@
+Antes de Internet
+Antes de la creación de Internet, la única forma de comunicarse digitalmente era por medio del telégrafo El telégrafo se inventó en 1840, emitía señales eléctricas que viajaban por cables conectados entre un origen y un destino. Utilizaba el código Morse para interpretar la información.
+ARPANET
+En 1958 los EEUU fundaron la Advanced Researchs Projects Agency (ARPA) a través del Ministerio de Defensa. El ARPA estaba formado por unos 200 científicos de alto nivel y tenia un gran presupuesto. El ARPA se centró en crear comunicaciones directas entre ordenadores para poder comunicar las diferentes bases de investigación.
+En 1962, el ARPA creó un programa de investigación computacional bajo la dirección de John Licklider, un científico del MIT (Massachusetts Institute of Technology).
+En 1967 ya se había hecho suficiente trabajo para que el ARPA publicara un plan para crear una red de ordenadores denominada ARPANET. ARPANET recopilaba las mejores idas de los equipos del MIT, el Natinonal Physics Laboratory (UK) y la Rand Corporation.
+La red fue creciendo y en 1971 ARPANET tenia 23 puntos conectados.

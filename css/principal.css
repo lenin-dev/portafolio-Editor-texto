@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding-inline-start: 40px;
+}
+
+h1 {
+    margin-top: 60px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.contendor {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.editor {
+    max-width: 100vh;
+    min-width: 40vh;
+    height: 40vh;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 0.6 1 auto;
+    text-align: center;
+}
+
+input {
+    margin: 5px;
+}
+
+button {
+    margin: 5px;
+}
+
+.archivos {
+    max-width: 40vh;
+    min-width: 40vh;
+    height: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-bottom: 20px;
+    flex: 0.2 1 auto;
+}
+
+.txtEditor {
+    width: 300px;
+    min-width: 150px;
+    min-height: 180px;
+}

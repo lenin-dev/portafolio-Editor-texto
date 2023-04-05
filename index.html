@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de archivos de texto</title>
+    <link rel="stylesheet" href="css/principal.css">
+</head>
+<body>
+
+    <section>
+        <h1>Editor archivos de texto</h1>
+        <div class="contendor">
+            <div class="archivos" id="archivos">
+                <input type="text" id="txtNomArchivo" name="txtNomArchivo" placeholder="Nombre del archivo">
+                <button type="button" id="btnCrear">Crear archivo</button>
+                <h2>Archivos:</h2>
+                <ul id="cont-ul">
+                </ul>
+            </div>
+            <div class="editor" id="editor">
+                <input type="text" id="txtCambiarNom" name="txtCambiarNom" placeholder="Cambiar nombre">
+                <button type="button" id="btnCambiar">Cambiar nombre</button>
+
+                <button type="button" id="btnEliminar">Eliminar</button>
+                <button type="button" id="btnLimpiar">Limpiar</button>
+                
+                <h2>Editor de texto: <span id="nomDoc"></span></h2>
+                <button type="button" id="btnGuardar">Guardar</button>
+                <textarea class="txtEditor" name="txtEditor" id="txtEditor"></textarea>
+            </div>
+        </div>
+    </section>
+    
+    <script src="js/principal.js"></script>
+</body>
+</html>
