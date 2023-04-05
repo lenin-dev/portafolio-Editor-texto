@@ -112,7 +112,6 @@ function limpiar() {
 // CREAR ARCHIVO
 let envio = document.getElementById("btnCrear")
 let nombre = document.getElementById("txtNomArchivo")
-
 envio.addEventListener("click", (event) => {
     event.preventDefault()
     if (nombre.value.trim() === "") {
@@ -120,7 +119,7 @@ envio.addEventListener("click", (event) => {
 
     } else {
         var nom = nombre.value.replace(/ /g, "_");
-        httpPost("./php/metodos.php", "nombre="+nom);
+        httpPost("./php/metodos.php", "nombrearchivo="+nom);
         nombre.value = "";
     }
 });

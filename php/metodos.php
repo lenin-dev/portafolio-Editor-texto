@@ -23,7 +23,7 @@
                 $respuesta['datos'] = json_decode(cargarArchivos());
                 http_response_code(200);
 
-            } else if(isset($_POST['nombre']) != "") {
+            } else if(isset($_POST['nombrearchivo']) != "") {
                 $respuesta['estado'] = 'crear_doc';
                 $respuesta['datos'] = json_decode(crearArchivo($_POST['nombre']));
                 http_response_code(200);
@@ -35,9 +35,9 @@
             break;
         
         case 'DELETE':
-            if(isset($_GET['eliminar'])) {
-                $respuesta['estado'] = 'eliminarArch';
+            if(isset($_GET['eliminar'])) {                
                 if($respuestaDatos = json_decode(eliminarArchivo($_GET['eliminar']))) {
+                    $respuesta['estado'] = 'eliminarArch';
                     http_response_code(200);
                 } else {
                     http_response_code(500);
