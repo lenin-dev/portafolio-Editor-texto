@@ -33,6 +33,15 @@
                     http_response_code(500);
                 }
 
+            } else if(isset($_POST['id']) == 2) {
+
+                if(json_decode(guardarContenido($_POST['contenido'], $_POST['nomArchivo']))) {
+                    $respuesta['estado'] = 'contenidoGuardado';
+                    http_response_code(200);
+                } else {
+                    http_response_code(500);
+                }
+
             } else {
                 http_response_code(404);
             }
@@ -61,7 +70,7 @@
                 if(actualizarArchivo($_GET['archivo'], $_GET['actualizar'])) {
                     $respuesta['estado'] = 'actualizado';
                     http_response_code(200);
-                    
+
                 } else {
                     http_response_code(500);
                 }

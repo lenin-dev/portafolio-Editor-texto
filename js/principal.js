@@ -24,6 +24,10 @@ function httpPost(url, params) {
             } else if(respuesta.estado == 'crear_doc') {
                 mostrarArchActualizados(entrada = "mostrar");
 
+            } else if(respuesta.estado == 'contenidoGuardado') {
+                alert("Contenido guardado");
+                limpiar();
+                // mostrarArchActualizados(entrada = "mostrar");
             } else {
                 alert(respuesta.datos.error);
             }
@@ -114,6 +118,8 @@ function cargarTexto(info, archivo) {
     var textarea = document.getElementById('txtEditor');
     var nomDoc  = document.getElementById('nomDoc');
 
+    textarea.value = info;
+    nomDoc.value = archivo;
     textarea.innerHTML = info;
     nomDoc.innerHTML = archivo;
 }
@@ -128,8 +134,11 @@ function limpiar() {
 
     txtCambiarNom.value = "";
     txtNomArchivo.value = "";
+
+    nomDoc.value = "";
     nomDoc.innerHTML = "";
     textarea.value = "";
+    textarea.innerHTML = "";
 }
 
 // CREAR ARCHIVO
@@ -168,6 +177,7 @@ function eliminarArchivo() {
     }
 }
 
+// ACTUALIZAR NOMBRE DEL ARCHIVO
 document.getElementById('btnCambiar').addEventListener("click", function() {
     actualizarArchivo();
 });
@@ -179,5 +189,22 @@ function actualizarArchivo() {
     } else {
         var nom = campo.value.replace(/ /g, "_");
         httpPut("./php/metodos.php?archivo="+document.getElementById('nomDoc').innerHTML+"&actualizar="+nom);
+    }
+}
+
+// GUARDAR CONTENIDO DEL ARCHIVO
+document.getElementById('btnGuardar').addEventListener("click", function() {
+    guardarContenido();
+});
+function guardarContenido() {
+    var cont = document.getElementById('txtEditor');
+    var nomDoc = document.getElementById('nomDoc');
+
+    if(nomDoc.innerHTML == "") {
+        alert("Seleccione un archivo.");
+    } else if(cont.value.trim() == "") {
+        alert("Agregue un contenido.");
+    } else {
+        httpPost("./php/metodos.php", "id="+2+"&contenido="+cont.value+"&nomArchivo="+nomDoc.innerHTML);
     }
 }

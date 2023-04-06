@@ -56,3 +56,17 @@
             return false;
         }
     }
+
+    function guardarContenido($contenido, $archivo) {
+        
+        if(file_exists("../archivos/".$archivo)) {
+            $abrirFichero = fopen("../archivos/".$archivo, 'w+');
+
+            fwrite($abrirFichero, $contenido);
+
+            fclose($abrirFichero);
+            return true;
+        } else {
+            return false;
+        }
+    }
