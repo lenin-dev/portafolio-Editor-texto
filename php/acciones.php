@@ -33,6 +33,7 @@
             return true;
         } else {
             fwrite($crearArchivo, "");
+            chmod($crearArchivo, 777);
             fclose($crearArchivo);
             return false;
         }
