@@ -57,7 +57,7 @@ function httpGet(url) {
 function httpDelete(url) {
     var http = new XMLHttpRequest();
 
-    http.open("DELETE", url, true);
+    http.open("GET", url, true);
     http.send();
 
     http.onreadystatechange = function() {
@@ -68,6 +68,7 @@ function httpDelete(url) {
                 mostrarArchActualizados(entrada = "mostrar");
                 limpiar();
             }
+            
         }
     }
 }
@@ -76,7 +77,8 @@ function httpDelete(url) {
 function httpPut(url) {
     var http = new XMLHttpRequest();
 
-    http.open("PUT", url, true);
+    http.open("GET", url, true);
+    // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send();
 
     http.onreadystatechange = function() {
@@ -188,7 +190,7 @@ function actualizarArchivo() {
         alert("Llene el campo para actualizar el nombre");
     } else {
         var nom = campo.value.replace(/ /g, "_");
-        httpPut("./php/metodos.php?archivo="+document.getElementById('nomDoc').innerHTML+"&actualizar="+nom);
+        httpPut("./php/metodos.php?archivoAct="+document.getElementById('nomDoc').innerHTML+"&actualizar="+nom);
     }
 }
 
