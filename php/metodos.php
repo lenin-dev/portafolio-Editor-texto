@@ -13,7 +13,7 @@
                 $respuesta['datos'] = json_decode(getArchivo($_GET['archivo']));
                 http_response_code(200);
                 
-            } else if(isset($_GET['eliminar']) != "") {
+            } else if(isset($_GET['eliminar'])) {
                 
                 if(eliminarArchivo($_GET['eliminar'])) {
                     $respuesta['estado'] = 'eliminarArch';
@@ -22,7 +22,7 @@
                     http_response_code(500);
 
                 }
-            } else if(isset($_GET['archivoAct']) != "" && isset($_GET['actualizar']) != "") { 
+            } else if(isset($_GET['archivoAct']) && isset($_GET['actualizar'])) { 
                 
                 if(actualizarArchivo($_GET['archivoAct'], $_GET['actualizar'])) {
                     $respuesta['estado'] = 'actualizado';
@@ -40,7 +40,7 @@
                 $respuesta['estado'] = 'archivos';
                 $respuesta['datos'] = json_decode(cargarArchivos());
                 http_response_code(200);
-            } else if(isset($_POST['nombrearchivo']) != "") {
+            } else if(isset($_POST['nombrearchivo'])) {
                 if($datosCreacion = json_decode(crearArchivo($_POST['nombrearchivo']))) {
                     $respuesta['estado'] = 'crear_doc';
                     http_response_code(200);

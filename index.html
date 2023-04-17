@@ -14,14 +14,14 @@
         <h1>Editor archivos de texto</h1>
         <div class="contendor">
             <div class="archivos" id="archivos">
-                <input type="text" id="txtNomArchivo" name="txtNomArchivo" placeholder="Nombre del archivo">
+                <input type="text" id="txtNomArchivo" name="txtNomArchivo" onkeypress="return check(event)" placeholder="Nombre del archivo">
                 <button type="button" id="btnCrear">Crear archivo</button>
                 <h2>Archivos:</h2>
                 <ul id="cont-ul">
                 </ul>
             </div>
             <div class="editor" id="editor">
-                <input type="text" id="txtCambiarNom" name="txtCambiarNom" placeholder="Cambiar nombre">
+                <input type="text" id="txtCambiarNom" name="txtCambiarNom" onkeypress="return check(event)" placeholder="Cambiar nombre">
                 <button type="button" id="btnCambiar">Cambiar nombre</button>
 
                 <button type="button" id="btnEliminar">Eliminar</button>
